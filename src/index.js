@@ -65,12 +65,12 @@ function onLoadMore() {
 
         const totalPages = Math.ceil(data.totalHits / 40);
 
-        if (currentPage > totalPages) {
-          loadMoreBtn.classList.add('is-hidden');
-         Notify.failure(
-           "We're sorry, but you've reached the end of search results."
-         );
-        }
+          if (totalPages === currentPage) {
+            Notify.failure(
+              "We're sorry, but you've reached the end of search results."
+              );
+              loadMoreBtn.classList.add('is-hidden');
+          }
       })
       .catch(error => console.log(error));
 }
